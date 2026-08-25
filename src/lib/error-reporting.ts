@@ -14,8 +14,8 @@ type TelemetryEvents = {
 
 declare global {
   interface Window {
-    __lovableEvents?: TelemetryEvents;
-    __lovableReportRuntimeError?: (payload: {
+    __siteEvents?: TelemetryEvents;
+    __siteReportRuntimeError?: (payload: {
       message: string;
       stack?: string;
       filename?: string;
@@ -25,7 +25,7 @@ declare global {
 
 export function reportRuntimeError(error: unknown, context: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;
-  window.__lovableEvents?.captureException?.(
+  window.__siteEvents?.captureException?.(
     error,
     {
       source: "react_error_boundary",
@@ -46,7 +46,7 @@ export function reportRuntimeError(error: unknown, context: Record<string, unkno
         ? error.message
         : String(error);
   const stack = error instanceof Error ? error.stack : undefined;
-  window.__lovableReportRuntimeError?.({
+  window.__siteReportRuntimeError?.({
     message,
     ...(stack !== undefined && { stack }),
     filename: window.location.pathname,
