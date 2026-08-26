@@ -88,6 +88,17 @@ export function SiteFooter() {
           </span>
           <span>Telangana, India</span>
         </div>
+        <div className="pb-8 pt-4 text-center text-[0.6rem] tracking-[0.15em] uppercase text-ivory/25">
+          Designed & Developed by{" "}
+          <a
+            href="https://www.dreevn.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-brass transition-colors duration-200 font-medium"
+          >
+            Dreevn
+          </a>
+        </div>
       </div>
     </footer>
   );
